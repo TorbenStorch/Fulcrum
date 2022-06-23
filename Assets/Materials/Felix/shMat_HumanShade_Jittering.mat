@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: shMat_HumanShade
+  m_Name: shMat_HumanShade_Jittering
   m_Shader: {fileID: -6465566751694194690, guid: 9d8b48245b8b13c459a135299f07fbdb,
     type: 3}
   m_ValidKeywords: []
@@ -61,8 +61,11 @@ Material:
     - Vector1_E76F4BD3: -0.5
     - Vector1_F278FEE0: 0
     - Vector1_FA7C3821: -0.27
+    - _Float: 0.0001
+    - _Jitter_Strength: 100
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Vertex_Displacement_Strength: 0.0005
     m_Colors:
     - Color_1DEAAAEB: {r: 0, g: 0, b: 0, a: 0}
     - Color_51316B18: {r: 0, g: 0, b: 0, a: 0}
