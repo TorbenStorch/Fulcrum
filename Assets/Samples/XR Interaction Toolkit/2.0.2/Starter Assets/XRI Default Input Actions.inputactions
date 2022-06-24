@@ -523,11 +523,11 @@
                 },
                 {
                     "name": "",
-                    "id": "8da6ed3a-f621-49fe-8c76-1f6b7d7754d6",
-                    "path": "<XRController>{LeftHand}/triggerPressed",
-                    "interactions": "",
+                    "id": "1c9e5da5-a236-4038-be32-355f9c352138",
+                    "path": "<XRController>{LeftHand}/Primary2DAxis",
+                    "interactions": "Sector(directions=1)",
                     "processors": "",
-                    "groups": "Generic XR Controller",
+                    "groups": "Noncontinuous Move",
                     "action": "Teleport Mode Activate",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -562,6 +562,17 @@
                     "processors": "StickDeadzone",
                     "groups": "Continuous Move",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bea56ee6-923c-4475-9585-7fe94babcdec",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Teleport Mode Activate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
