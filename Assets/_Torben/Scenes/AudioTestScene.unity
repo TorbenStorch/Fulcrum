@@ -894,8 +894,8 @@ MonoBehaviour:
   closestDistanceToHead: 0.099
   furthestDistanceToHead: 0.53
   volumeMax: 1
-  _visibleOnSelect: 0
-  _wiredSpheres: 0
+  _visibleOnSelect: 1
+  _wiredSpheres: 1
 --- !u!54 &683989735
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1065,7 +1065,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328356911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.69, y: 0.487, z: -1.12}
+  m_LocalPosition: {x: 2.703, y: 0.487, z: -0.281}
   m_LocalScale: {x: 0.18385273, y: 0.18385273, z: 0.18385273}
   m_ConstrainProportionsScale: 0
   m_Children: []
