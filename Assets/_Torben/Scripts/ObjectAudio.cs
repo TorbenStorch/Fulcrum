@@ -1,7 +1,7 @@
 /*-------------------------------------------------------
 Creator: Torben Storch
 Project: Fulcrum
-Last change: 24-06-2022
+Last change: 30-06-2022
 Topic: Play Audio when the target eneters the trigger
 
 Explanaition:
@@ -18,8 +18,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 //Needs a Collider with isTrigger true & atleast one Rigidbody (either on this or on target)!
-[RequireComponent(typeof(AudioSource))] 
+[RequireComponent(typeof(AudioSource))]
 public class ObjectAudio : MonoBehaviour
 {
 	[Header("Target to enter TriggerCollider")]
@@ -27,13 +28,16 @@ public class ObjectAudio : MonoBehaviour
 	[Header("Origin of the sound")]
 	[SerializeField] GameObject soundOrigin; //the 3D position of the audio
 	[Header("Start/Stop/Maximum radius for audio")]
-	[Range(0f,2f)]
+	[Range(0f, 2f)]
 	[SerializeField] float closestDistanceToHead = 0f; //the radius where the audio will be at max
-	[Range(0f,10f)]
+	[Range(0f, 10f)]
 	[SerializeField] float furthestDistanceToHead = 1f; //the radius where the audio will start (lowest)
 	[Header("Maximum volume of AudioSourceClip")]
 	[Tooltip("The Volume of the AudioSource should stay at 1, here it can be adjusted to be lower!")]
 	[SerializeField] float volumeMax = 1f; //change this in unity to adjust the maximum volume
+
+	public static bool canHearAudio { set; get; }
+
 
 	AudioSource audioSource;
 	bool canPlayAudio;
@@ -43,7 +47,7 @@ public class ObjectAudio : MonoBehaviour
 	[Header("Unity Editor - Gizmo")]
 	[SerializeField] bool _visibleOnSelect;
 	[SerializeField] bool _wiredSpheres;
-	
+
 
 	private void Start()
 	{
@@ -52,6 +56,11 @@ public class ObjectAudio : MonoBehaviour
 	}
 	private void Update()
 	{
+		if (!canHearAudio)
+		{
+			canPlayAudio = false;
+		}
+
 		if (canPlayAudio && !audioSource.isPlaying)
 		{
 			audioSource.Play();
@@ -74,7 +83,7 @@ public class ObjectAudio : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject == target)
+		if (other.gameObject == target && canHearAudio)
 			canPlayAudio = true;
 	}
 	private void OnTriggerExit(Collider other)

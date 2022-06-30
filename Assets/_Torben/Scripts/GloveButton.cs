@@ -1,7 +1,7 @@
 /*-------------------------------------------------------
 Creator: Torben Storch
 Project: Fulcrum
-Last change: 24-06-2022
+Last change: 30-06-2022
 Topic: Play Audio when the target eneters the trigger
 ---------------------------------------------------------*/
 using System.Collections;
@@ -14,7 +14,9 @@ public class GloveButton : MonoBehaviour
 	[SerializeField] private GameObject handCollider;
 	[SerializeField] private GameObject frame;
 
+	[Range(0.1f,1f)]
 	[SerializeField] private float timeToGoDown = 0.1f;
+	[Range(0.1f, 1f)]
 	[SerializeField] private float timeToGoUp = 0.1f;
 
 	public UnityEvent onPress;
@@ -23,7 +25,7 @@ public class GloveButton : MonoBehaviour
 	bool buttonDown;
 	Vector3 startPos;
 
-	private void Start() => startPos = gameObject.transform.position;
+	private void Start() => startPos = gameObject.transform.localPosition;
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -45,7 +47,7 @@ public class GloveButton : MonoBehaviour
 	{
 		while (!buttonDown)
 		{
-			gameObject.transform.position -= new Vector3(0, timeToGoDown * Time.deltaTime, 0);
+			gameObject.transform.localPosition -= new Vector3(0, timeToGoDown * Time.deltaTime, 0);
 			yield return null;
 		}
 		yield return null;
@@ -53,9 +55,9 @@ public class GloveButton : MonoBehaviour
 
 	IEnumerator ButtonGoesUp()
 	{
-		while (gameObject.transform.position.y < startPos.y)
+		while (gameObject.transform.localPosition.y < startPos.y)
 		{
-			gameObject.transform.position += new Vector3(0, timeToGoUp * Time.deltaTime, 0);
+			gameObject.transform.localPosition += new Vector3(0, timeToGoUp * Time.deltaTime, 0);
 			yield return null;
 		}
 		buttonDown = false;
