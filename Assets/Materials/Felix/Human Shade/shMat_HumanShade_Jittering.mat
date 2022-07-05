@@ -61,16 +61,17 @@ Material:
     - Vector1_E76F4BD3: -0.5
     - Vector1_F278FEE0: 0
     - Vector1_FA7C3821: -0.27
+    - _Alpha_Clip_Threshold: 0
     - _Float: 0.0001
     - _Jitter_Strength: 100
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Transparency: 0.3
+    - _Transparency: 0.6
     - _Vertex_Displacement_Strength: 0.0005
     m_Colors:
     - Color_1DEAAAEB: {r: 0, g: 0, b: 0, a: 0}
     - Color_51316B18: {r: 0, g: 0, b: 0, a: 0}
-    - Color_B3D1197F: {r: 0, g: 0, b: 0, a: 0.8235294}
+    - Color_B3D1197F: {r: 0.754717, g: 0, b: 0, a: 0.8235294}
   m_BuildTextureStacks: []
 --- !u!114 &8594273912966615713
 MonoBehaviour:
