@@ -20,7 +20,7 @@ public class TearTimeMeasurement : MonoBehaviour
     [Range(0.0f, 1.0f)]
     [SerializeField] private float minPastValue, maxPastValue, minFutureValue, maxFutureValue;
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool tearCorrect = false;
 
     void Awake()
