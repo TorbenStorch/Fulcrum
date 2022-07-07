@@ -146,8 +146,8 @@ Material:
     - _Albedo2_Strength: 0.833
     - _AlphaClip: 0
     - _Blend: 0
-    - _BlendToFuture: 0
-    - _BlendToPast: 0
+    - _BlendToFuture: 0.0042573134
+    - _BlendToPast: 0.106452644
     - _BumpScale: 1
     - _CastShadows: 1
     - _ClearCoatMask: 0

@@ -25,9 +25,9 @@ public class EventState_3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (medicineInCorrectPos &&)
-        //{
-        //    NextStateEvent();
-        //}
+        if (medicineInCorrectPos)
+        {
+            NextStateEvent();
+        }
     }
 }

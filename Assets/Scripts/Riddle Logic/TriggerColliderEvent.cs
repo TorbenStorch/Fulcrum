@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class TriggerColliderEvent : MonoBehaviour
 {
+    [SerializeField] private bool delay;
 
     [SerializeField] private GameObject target;
     public UnityEvent inTrigger;
@@ -13,7 +14,19 @@ public class TriggerColliderEvent : MonoBehaviour
     {
         if (other.gameObject == target)
         {
-            inTrigger.Invoke();
+            if (!delay)
+            {
+                inTrigger.Invoke();
+            }
+            else
+            {
+                Invoke("TriggerEnterDelay", 5f);
+            }
         }
+    }
+
+    private void TriggerEnterDelay()
+    {
+        inTrigger.Invoke();
     }
 }

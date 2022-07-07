@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: shMat_HumanShade_Jittering
+  m_Name: shMat_HumanShade_Jittering_cyan
   m_Shader: {fileID: -6465566751694194690, guid: 9d8b48245b8b13c459a135299f07fbdb,
     type: 3}
   m_ValidKeywords: []
@@ -66,12 +66,12 @@ Material:
     - _Jitter_Strength: 100
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Transparency: 0.6
+    - _Transparency: 0.68
     - _Vertex_Displacement_Strength: 0.0005
     m_Colors:
     - Color_1DEAAAEB: {r: 0, g: 0, b: 0, a: 0}
     - Color_51316B18: {r: 0, g: 0, b: 0, a: 0}
-    - Color_B3D1197F: {r: 0.754717, g: 0, b: 0, a: 0.8235294}
+    - Color_B3D1197F: {r: 0, g: 1, b: 0.9864538, a: 0.8235294}
   m_BuildTextureStacks: []
 --- !u!114 &8594273912966615713
 MonoBehaviour:

@@ -4,7 +4,7 @@ Project: Fulcrum
 Last change: 01-07-2022
 Topic: Define winning condition for the attached Tear Object
 ---------------------------------------------------------*/
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,6 +22,7 @@ public class TearTimeMeasurement : MonoBehaviour
 
     //[HideInInspector]
     public bool tearCorrect = false;
+
 
     void Awake()
     {
@@ -53,9 +54,13 @@ public class TearTimeMeasurement : MonoBehaviour
         }
 
         if (tearCorrect)
+        {
             Debug.Log(gameObject.name + " in win range");
+        }
         else
+        {
             Debug.Log(gameObject.name + " not in win range anymore");
+        }
     }
 
 

@@ -2050,6 +2050,11 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 463631833}
+    - target: {fileID: 8686186504171117465, guid: 2474241576f02c249a7028d301cc89b1,
+        type: 3}
+      propertyPath: minPastValue
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2474241576f02c249a7028d301cc89b1, type: 3}
 --- !u!1001 &7876381631498117964

@@ -11,6 +11,16 @@ public class EventState_2 : MonoBehaviour
     [SerializeField] GameObject[] activateTogglableGameObjects;
     public bool letterInCorrectPos { set; get; }
 
+    [SerializeField] private TearTimeMeasurement letterTearTimeMeasurement;
+
+    private void Start()
+    {
+        if(letterTearTimeMeasurement == null)
+        {
+            Debug.Log("You forgot to connect it you dingus!");
+        }
+    }
+
     public void ToggleShades()
     {
         deactivateTogglableGameObjects.ToggleGameObjectArray(false);
@@ -25,9 +35,9 @@ public class EventState_2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (letterInCorrectPos && )
-        //{
-        //    NextStateEvent();
-        //}
+        if (letterInCorrectPos && letterTearTimeMeasurement.tearCorrect)
+        {
+            NextStateEvent();
+        }
     }
 }
