@@ -15,8 +15,9 @@ public class Raycast : MonoBehaviour
     private Vector3 direction;
     private  GameObject targetObject;
 
-    public bool isGrabbed;
+    //public bool isGrabbed;
     public SkinnedMeshRenderer targetRenderer;
+    public MeshRenderer targetMeshRenderer;
     public Material targetMaterial;
 
     [SerializeField] LayerMask layerMask;
@@ -39,15 +40,29 @@ public class Raycast : MonoBehaviour
         if (Physics.Raycast(origin, transform.TransformDirection(direction), out hit, 100f, layerMask))
         {
             targetObject = hit.transform.gameObject;
-            targetObject.TryGetComponent(out TearInteractable targetInteractable);
+            // targetObject.TryGetComponent(out TearInteractable targetInteractable);
+            // isGrabbed = targetInteractable.isGrabbed;
             Debug.Log("Object Found: " + targetObject.name);
-            isGrabbed = targetInteractable.isGrabbed;
-            if (isGrabbed)
+
+            if (targetObject.TryGetComponent(out SkinnedMeshRenderer skinnedRenderer))
             {
+                targetMeshRenderer = null;
                 targetRenderer = targetObject.GetComponent<SkinnedMeshRenderer>();
                 targetMaterial = targetRenderer.sharedMaterial;
-                Debug.Log("Grab Successful ");
+                Debug.Log("Skinned Mesh Render found in: " + targetObject.name);
             }
+            else if (targetObject.TryGetComponent(out MeshRenderer meshRenderer))
+            {
+                targetRenderer = null;
+                targetMeshRenderer = targetObject.GetComponent<MeshRenderer>();
+                targetMaterial = targetMeshRenderer.material;
+                Debug.Log("Mesh Render found in: " + targetObject.name);
+            }
+            else
+            {
+                Debug.LogWarning("Mesh Renderer or Target Mesh Renderer Missing from Object: " + targetObject.name);
+            }
+
 
             Debug.Log("Raycast Hit");
             //Debug.Log(hit.point);

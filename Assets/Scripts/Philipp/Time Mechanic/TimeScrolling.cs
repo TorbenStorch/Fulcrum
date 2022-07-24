@@ -12,6 +12,7 @@ using UnityEngine;
 public class TimeScrolling : MonoBehaviour
 {
     public SkinnedMeshRenderer _tearRenderer;
+    public MeshRenderer _tearMeshRenderer;
     public float _blendValue;
     public float _controllerRotZ;
     public Raycast _rayCastScript;
@@ -28,8 +29,7 @@ public class TimeScrolling : MonoBehaviour
         _controllerRotZ = controllerRight.transform.rotation.z * 100;
         _blendValue = _controllerRotZ;
         
-
-        if (_rayCastScript._rayCastHit == true && _rayCastScript.isGrabbed == true)
+        if (_rayCastScript._rayCastHit == true && _rayCastScript.targetRenderer != null)
         {
             _tearRenderer = _rayCastScript.targetRenderer;
 
@@ -43,6 +43,15 @@ public class TimeScrolling : MonoBehaviour
                 _tearRenderer.SetBlendShapeWeight(0, _blendValue - 2 * _blendValue);
                 _rayCastScript.targetMaterial.SetFloat("_BlendToFuture", (_blendValue - 2 * _blendValue) / 100);
             }
+        }
+
+        if (_rayCastScript._rayCastHit == true && _rayCastScript.targetMeshRenderer != null)
+        {
+            if (_blendValue >= 0)
+                _rayCastScript.targetMaterial.SetFloat("_BlendToPast", _blendValue / 100);
+            
+            else if (_blendValue < 0)           
+                _rayCastScript.targetMaterial.SetFloat("_BlendToFuture", (_blendValue - 2 * _blendValue) / 100);
         }
 
         // Debug.Log("Blend to Past Value: " + _rayCastScript.targetMaterial.GetFloat("_BlendToPast").ToString());

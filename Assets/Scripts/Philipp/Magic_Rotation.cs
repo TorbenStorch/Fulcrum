@@ -21,34 +21,42 @@ public class Magic_Rotation : MonoBehaviour
 
     [SerializeField] TimeScrolling scrollingScript;
     private float rotationDefault;
-    private float fastRotationSpeed;
     private bool startFadingIn, startFadingOut;
+    [SerializeField] private AudioSource audioSource;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rotationDefault = rotationSpeed;
-        fastRotationSpeed = rotationSpeed * 3;
         materialSetup();
     }
 
     void Update()
     {
-        if (scrollingScript._rayCastScript._rayCastHit == true && scrollingScript._rayCastScript.isGrabbed == true)
+        if (scrollingScript._rayCastScript._rayCastHit == true)
         {
             startFadingIn = true;
             startFadingOut = false;
             rotationSpeed = scrollingScript._controllerRotZ;
+            audioSource.Play();
         }
         else
         {
             startFadingOut = true;
             startFadingIn = false;
             rotationSpeed = rotationDefault;
+            audioSource.Stop();
         }
 
-        magicOut.transform.Rotate(rot * rotationSpeed * Time.deltaTime);
-        magicMid.transform.Rotate(rot * - rotationSpeed * Time.deltaTime);
-        magicInner.transform.Rotate(rot * rotationSpeed * 3 * Time.deltaTime);        
+        //audioSource.pitch = rotationSpeed;
+        //magicOut.transform.Rotate(rot * rotationSpeed * Time.deltaTime);
+        magicMid.transform.Rotate(rot * rotationSpeed * 2 * Time.deltaTime);
+        magicInner.transform.Rotate(rot * rotationSpeed / 10 * Time.deltaTime);
+
+        if (audioSource.isPlaying)
+        {
+            Debug.Log("Currently Playing: " + audioSource.name);
+        }
 
         #region alpha fade
         Color color = matOut.color;
@@ -95,9 +103,9 @@ public class Magic_Rotation : MonoBehaviour
 
     private void materialSetup()
     {
-        //matOut = gameObject.transform.GetChild(0).GetComponent<Material>();
-        //matMid = gameObject.transform.GetChild(1).GetComponent<Material>();
-        //matInner = gameObject.transform.GetChild(2).GetComponent<Material>();
+        //matOut = transform.GetChild(0).GetComponent<Material>();
+        //matMid = transform.GetChild(1).GetComponent<Material>();
+        //matInner = transform.GetChild(2).GetComponent<Material>();
 
         Color colorOut = matOut.color;
         colorOut.a = 0f;

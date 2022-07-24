@@ -144,10 +144,13 @@ Material:
     - _Albedo0_Strength: 1
     - _Albedo1_Strength: 1
     - _Albedo2_Strength: 0.833
+    - _Alpha0: 0
+    - _Alpha1: 0
+    - _Alpha2: 0
     - _AlphaClip: 0
     - _Blend: 0
-    - _BlendToFuture: 0
-    - _BlendToPast: 0
+    - _BlendToFuture: 0.11071471
+    - _BlendToPast: 0.15379944
     - _BumpScale: 1
     - _CastShadows: 1
     - _ClearCoatMask: 0
@@ -172,6 +175,7 @@ Material:
     - _Occlusion1_Strength: 1
     - _Occlusion2_Strength: 0.287
     - _OcclusionStrength: 1
+    - _Opacity: 0
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
