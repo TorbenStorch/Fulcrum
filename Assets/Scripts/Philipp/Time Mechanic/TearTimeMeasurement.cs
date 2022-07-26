@@ -33,25 +33,23 @@ public class TearTimeMeasurement : MonoBehaviour
     void Update()
     {
         GetMaterial();
-        if (_tearIneractableScript.isGrabbed)
-        {
-            if (pastWins)
-            {
-                if (_pastValue > minPastValue && _pastValue < maxPastValue)
-                    tearCorrect = true;
-                
-                else 
-                    tearCorrect = false;
-            } else if (!pastWins)
-            {
-                if (_futureValue > minFutureValue && _futureValue < maxFutureValue)
-                
-                    tearCorrect = true;  
 
-                else
-                    tearCorrect = false;
-            }
+        if (pastWins)
+        {
+            if (_pastValue > minPastValue && _pastValue < maxPastValue)
+                tearCorrect = true;
+            
+            else 
+                tearCorrect = false;
+        } else if (!pastWins)
+        {
+            if (_futureValue > minFutureValue && _futureValue < maxFutureValue)
+                tearCorrect = true;  
+
+            else
+                tearCorrect = false;
         }
+        
 
         if (tearCorrect)
         {
@@ -67,7 +65,11 @@ public class TearTimeMeasurement : MonoBehaviour
 
     private void GetMaterial()
     {
-        _material = gameObject.GetComponent<SkinnedMeshRenderer>().sharedMaterial;
+        if (TryGetComponent(out SkinnedMeshRenderer skinnedRenderer))
+            _material = gameObject.GetComponent<SkinnedMeshRenderer>().sharedMaterial;
+        else if (TryGetComponent(out MeshRenderer meshRenderer))
+            _material = gameObject.GetComponent<MeshRenderer>().sharedMaterial;
+        
 
         if (_material != null)
         {
